@@ -1,1 +1,1 @@
-web: gunicorn hoter.wsgi --log-file -
+web: gunicorn --chdir Noter Noter.wsgi --log-file -
