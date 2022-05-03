@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'noter_db',
         'USER': 'postgres',
         'PASSWORD':'admin',
-
+        'DATABASE_URL': 'postgres://cajwldeplhefhv:0f73d446b9a2a698ff1092fedf1803410d0e51cdeccf98244d7af2f43d318348@ec2-3-229-252-6.compute-1.amazonaws.com:5432/d7fuflcfvb40n2'
 
     }
 }
