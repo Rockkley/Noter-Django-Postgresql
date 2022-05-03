@@ -10,6 +10,13 @@ try:
 
     # Create a cursor to perform database operations
     cursor = connection.cursor()
+    try:
+        insert_q = """INSERT INTO public.noter_app_category (id,title) VALUES ('1','Genius Ideas');"""
+        cursor.execute(insert_q)
+        print('good')
+
+    except Exception as E:
+        print(E)
     # Print PostgreSQL details
     print("PostgreSQL server information")
     print(connection.get_dsn_parameters(), "\n")
@@ -19,8 +26,8 @@ try:
     record = cursor.fetchone()
     print("You are connected to - ", record, "\n")
 
-    insert_q = """INSERT INTO noter_app_category (title, id) VALUES ('Genius Ideas','1');"""
-    cursor.execute(insert_q)
+
+
 
 except (Exception, Error) as error:
     print("Error while connecting to PostgreSQL", error)
