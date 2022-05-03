@@ -82,9 +82,13 @@ WSGI_APPLICATION = 'Noter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'noter_db',
-        "USER": 'postgres',
-        'PASSWORD': 'admin'
+        'NAME': 'd7fuflcfvb40n2',
+        "USER": 'cajwldeplhefhv',
+        "HOST": 'ec2-3-229-252-6.compute-1.amazonaws.com',
+        "PORT": "5432",
+        'PASSWORD': '0f73d446b9a2a698ff1092fedf1803410d0e51cdeccf98244d7af2f43d318348',
+        "URI":"postgres://cajwldeplhefhv:0f73d446b9a2a698ff1092fedf1803410d0e51cdeccf98244d7af2f43d318348@ec2-3-229-252-6.compute-1.amazonaws.com:5432/d7fuflcfvb40n2",
+        "Heroku CLI":"heroku pg:psql postgresql-tapered-59743 --app tranquil-eyrie-50381"
     }
 }
 
