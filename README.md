@@ -1,0 +1,1 @@
+# Noter Django CRUD app 
