@@ -11,8 +11,9 @@ try:
     # Create a cursor to perform database operations
     cursor = connection.cursor()
     try:
-        insert_q = """INSERT INTO public.noter_app_category (id,title) VALUES ('1','Genius Ideas');"""
+        insert_q = """INSERT INTO public.noter_app_category (id,title) VALUES ('2','Messages to future generations');"""
         cursor.execute(insert_q)
+        connection.commit()
         print('good')
 
     except Exception as E:
