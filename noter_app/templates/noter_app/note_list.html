@@ -1,0 +1,54 @@
+{% extends 'noter_app/base.html' %}
+
+{% block content %}
+    <style>
+
+
+tr:nth-child(even) {
+  background-color: rgba(100, 112, 212, 0.05);
+}
+tr:hover {background-color: #D6EEEE;}
+</style>
+    <table class ="table table-borderless">
+
+        <thead class="border-botom font-weight-bold" style="background-color: mintcream" >
+        <tr>
+            <td><h4>Title</h4></td>
+            <td><h4>Text</h4></td>
+            <td><h4>Category</h4></td>
+            <td><h4>Created</h4></td>
+            <td><h4>Last edited</h4></td>
+            <td>
+                <a href="{% url 'note_insert' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus">Add New</i>
+                </a>
+            </td>
+        </tr>
+        </thead>
+    <tbody>
+    {% for note in note_list %}
+
+        <tr>
+            <td><b>{{ note.title|truncatechars:30  }}</b></td>
+            <td>{{ note.text|truncatechars:30  }}</td>
+            <td>{{ note.category}}</td>
+            <td>{{ note.date_create }}</td>
+            <td>{{ note.date_modify }}</td>
+        <td>
+
+            <a href = "{% url 'note_update' note.id %}" class="btn text-secondary px-0">
+               <i class="far fa-edit fa-lg"></i>
+            </a>
+            <form action="{% url "note_delete" note.id %}" method="post" class="d-inline">
+               {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                </button>
+                 <hr>
+            </form>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table> <hr>
+{% endblock content %}
