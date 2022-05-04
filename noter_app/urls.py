@@ -21,5 +21,6 @@ urlpatterns = [
     path('', views.note_form, name='note_insert'),  # get & post requests for INSERT
     path('<int:id>/', views.note_form, name='note_update'),  # get & post requests for UPDATE
     path('list/', views.note_list, name='note_list'),  # get and show all notes
+    path('view/<int:id>', views.note_open, name='note_open'),  # get and show specific note
     path("delete/<int:id>/", views.note_delete, name="note_delete")
 ]
