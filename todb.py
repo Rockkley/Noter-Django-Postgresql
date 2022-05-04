@@ -11,7 +11,7 @@ try:
     # Create a cursor to perform database operations
     cursor = connection.cursor()
     try:
-        insert_q = """INSERT INTO public.noter_app_category (id,title) VALUES ('2','CATEGORY_NAME');"""
+        insert_q = """INSERT INTO public.noter_app_category (id,title) VALUES ('CATEGORY_ID','CATEGORY_NAME');"""
         cursor.execute(insert_q)
         connection.commit()
         
