@@ -1,0 +1,69 @@
+{% extends 'noter_app/base.html' %}
+
+{% block content %}
+    <style>
+
+#buttons{text-align: right}
+
+tr:nth-child(even) {
+  background-color: rgba(100, 112, 212, 0.05)
+;
+}
+
+tr:hover {background-color: #D6EEEE;}
+
+</style>
+    <table class ="table table-borderless">
+
+        <thead class="border-bottom font-weight-bold" style="background-color: mintcream"  >
+        <tr>
+            <th style="width:20%" >Title</th>
+            <td>{{ note.title  }}</td>
+
+        </tr>
+         <tr>
+            <th>Text</th>
+             <td>{{ note.text }}</td>
+              </tr>
+        <tr>
+            <th>Category</th>
+            <td>{{ note.category}}</td>
+            </tr><tr>
+            <th>Created</th>
+             <td>{{ note.date_create }}</td>
+            </tr><tr>
+            <th>Last edited</th>
+            <td>{{ note.date_modify }}</td>
+            </tr>
+
+
+        </thead>
+
+    <tbody>
+
+        <tr>
+            <td><a href ="{% url 'note_list' %}"  class="btn btn-secondary btn-block">
+                    <i class="fas fa-stream"> See the list</i></a></td>
+
+            <td id="buttons">
+
+            <a href = "{% url 'note_update' note.id %}" class="btn text-secondary px-0">
+               <i class="far fa-edit fa-lg"></i>
+            </a>
+            <form action="{% url "note_delete" note.id %}" method="post" class="d-inline">
+               {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                </button>
+
+            </form>
+
+            </td>
+
+
+
+        </tr>
+
+    </tbody>
+    </table> <hr>
+{% endblock content %}

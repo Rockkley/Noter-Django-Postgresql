@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NoteForm
+from .forms import NoteForm, NoteView
 from .models import Note
 # Create your views here.
 
@@ -32,3 +32,10 @@ def note_delete(request, id):
     note = Note.objects.get(pk=id)
     note.delete()
     return redirect('/list/')
+
+
+def note_open(request, id):
+
+    note = Note.objects.get(pk=id)
+    return render(request, 'noter_app/note_view.html', {'note':note})
+

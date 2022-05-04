@@ -8,8 +8,9 @@ tr:nth-child(even) {
   background-color: rgba(100, 112, 212, 0.05);
 }
 tr:hover {background-color: #D6EEEE;}
+
 </style>
-    <table class ="table table-borderless">
+    <table class ="table table-borderless" >
 
         <thead class="border-botom font-weight-bold" style="background-color: mintcream" >
         <tr>
@@ -35,7 +36,13 @@ tr:hover {background-color: #D6EEEE;}
             <td>{{ note.date_create }}</td>
             <td>{{ note.date_modify }}</td>
         <td>
+    <form action="{% url "note_open" note.id %}" method="get" class="d-inline">
+               {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
 
+            </form>
             <a href = "{% url 'note_update' note.id %}" class="btn text-secondary px-0">
                <i class="far fa-edit fa-lg"></i>
             </a>
@@ -44,8 +51,10 @@ tr:hover {background-color: #D6EEEE;}
                 <button type="submit" class="btn">
                     <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                 </button>
-                 <hr>
+
             </form>
+
+
         </td>
         </tr>
     {% endfor %}

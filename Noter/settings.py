@@ -9,14 +9,15 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 import django_heroku
-django_heroku.settings(locals())
+
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -80,10 +81,12 @@ WSGI_APPLICATION = 'Noter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'noter_db',
-        "USER": 'postgres',
-        'PASSWORD': 'admin'
+        'USER': 'postgres',
+        'PASSWORD':'admin',
+        'DATABASE_URL': 'postgres://cajwldeplhefhv:0f73d446b9a2a698ff1092fedf1803410d0e51cdeccf98244d7af2f43d318348@ec2-3-229-252-6.compute-1.amazonaws.com:5432/d7fuflcfvb40n2'
+
     }
 }
 
@@ -122,9 +125,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
+STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
