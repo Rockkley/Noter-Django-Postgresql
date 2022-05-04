@@ -12,7 +12,7 @@ tr:hover {background-color: #D6EEEE;}
 </style>
     <table class ="table table-borderless" >
 
-        <thead class="border-botom font-weight-bold" style="background-color: mintcream" >
+        <thead class="border-bottom font-weight-bold" style="background-color: mintcream" >
         <tr>
             <td><h4>Title</h4></td>
             <td><h4>Text</h4></td>
@@ -27,7 +27,7 @@ tr:hover {background-color: #D6EEEE;}
         </tr>
         </thead>
     <tbody>
-    {% for note in note_list %}
+    {% for note in notes %}
 
         <tr>
             <td><b>{{ note.title|truncatechars:30  }}</b></td>
@@ -51,13 +51,37 @@ tr:hover {background-color: #D6EEEE;}
                 <button type="submit" class="btn">
                     <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
                 </button>
-
             </form>
-
-
         </td>
         </tr>
     {% endfor %}
     </tbody>
     </table> <hr>
+
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+
+
+
+
+
+    {% if notes.has_previous %}
+        <li class="page-item"> <a class="page-link"  href="?page=1">&laquo 1</a></li>
+        <li class="page-item"> <a class="page-link" href="?page= {{ notes.previous_page_number }}">Previous</a></li>
+
+    {% endif %}
+
+
+  {% for i in nums %}
+      <li class="page-item"> <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+  {% endfor %}
+
+    {% if notes.has_next %}
+
+        <li class="page-item">  <a class="page-link" href="?page= {{ notes.next_page_number }}">Next</a></li>
+        <li class="page-item">  <a class="page-link" href="?page={{ notes.paginator.num_pages }}">Last &raquo;</a></li>
+
+    {% endif %}
+    </ul>
+</nav>
 {% endblock content %}

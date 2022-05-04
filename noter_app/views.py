@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from .forms import NoteForm, NoteView
 from .models import Note
+from django.core.paginator import Paginator
 # Create your views here.
 
 
 def note_list(request):
-    context = {'note_list': Note.objects.all()}
+
+    paginator = Paginator(Note.objects.all(), 6)
+    page = request.GET.get('page')
+    notes = paginator.get_page(page)
+    nums = "x" * notes.paginator.num_pages
+    context = {'note_list': Note.objects.all(), 'notes': notes, "nums":nums}
     return render(request, 'noter_app/note_list.html', context)
 
 
@@ -38,4 +44,5 @@ def note_open(request, id):
 
     note = Note.objects.get(pk=id)
     return render(request, 'noter_app/note_view.html', {'note':note})
+
 
