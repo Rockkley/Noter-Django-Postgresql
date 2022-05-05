@@ -13,5 +13,5 @@ class Note(models.Model):
     title = models.CharField(max_length=30)
     date_create = models.DateTimeField(auto_now_add=True)
     date_modify = models.DateTimeField(auto_now=True)
-    text = models.TextField(blank=True, max_length=100)
+    text = models.TextField(blank=True, max_length=10000)
 
