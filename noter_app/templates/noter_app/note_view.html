@@ -4,12 +4,13 @@
     <style>
 
 #buttons{text-align: right}
-
+div.note_text {max-width: 500px;  overflow-wrap: break-word;overflow-x: hidden;
+  overflow-y: hidden; }
 tr:nth-child(even) {
   background-color: rgba(100, 112, 212, 0.05)
 ;
 }
-
+th.txt{vertical-align: top;}
 tr:hover {background-color: #D6EEEE;}
 
 </style>
@@ -22,8 +23,8 @@ tr:hover {background-color: #D6EEEE;}
 
         </tr>
          <tr>
-            <th>Text</th>
-             <td>{{ note.text }}</td>
+             <th class="txt">Text</th>
+             <td><div class="note_text">{{ note.text }}</div></td>
               </tr>
         <tr>
             <th>Category</th>
