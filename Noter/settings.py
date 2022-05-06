@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os.path
 from pathlib import Path
 import django_heroku
-
+import configparser
 import dj_database_url
 
 
@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c0sg614tgteq!nrxy512c8tr)&kr2p8ney1hv!pu=ypnc#fq@n'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -74,6 +74,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Noter.wsgi.application'
+BOT_TOKEN = "BOT_TOKEN"
 
 
 # Database
@@ -82,10 +83,10 @@ WSGI_APPLICATION = 'Noter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'noter_db',
-        'USER': 'postgres',
-        'PASSWORD':'admin',
-        'DATABASE_URL': 'postgres://cajwldeplhefhv:0f73d446b9a2a698ff1092fedf1803410d0e51cdeccf98244d7af2f43d318348@ec2-3-229-252-6.compute-1.amazonaws.com:5432/d7fuflcfvb40n2'
+        'NAME': 'NAME',
+        'USER': 'USER',
+        'PASSWORD':'PASSWORD',
+        'DATABASE_URL': 'URL'
 
     }
 }
