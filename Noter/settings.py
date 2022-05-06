@@ -83,7 +83,11 @@ BOT_TOKEN = "BOT_TOKEN"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+
         'NAME': 'NAME',
+=======
+        'NAME': 'noter_db',
+
         'USER': 'USER',
         'PASSWORD':'PASSWORD',
         'DATABASE_URL': 'URL'
