@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os.path
 from pathlib import Path
 import django_heroku
-
+import configparser
 import dj_database_url
 
 
@@ -74,6 +74,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Noter.wsgi.application'
+BOT_TOKEN = "BOT_TOKEN"
 
 
 # Database
@@ -82,7 +83,11 @@ WSGI_APPLICATION = 'Noter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+
+        'NAME': 'NAME',
+=======
         'NAME': 'noter_db',
+
         'USER': 'USER',
         'PASSWORD':'PASSWORD',
         'DATABASE_URL': 'URL'

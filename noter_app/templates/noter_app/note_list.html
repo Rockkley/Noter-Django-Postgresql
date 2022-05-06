@@ -19,13 +19,17 @@ tr:hover {background-color: #D6EEEE;}
             <td><h4>Created</h4></td>
             <td><h4>Last edited</h4></td>
             <td>
+
                 <a href="{% url 'note_insert' %}" class="btn btn-outline-success">
                 <i class="fas fa-plus">Add New</i>
                 </a>
+
             </td>
         </tr>
         </thead>
+
     <tbody>
+
     {% for note in notes %}
 
         <tr>
@@ -35,6 +39,8 @@ tr:hover {background-color: #D6EEEE;}
             <td>{{ note.date_create }}</td>
             <td>{{ note.date_modify }}</td>
         <td>
+
+
     <form action="{% url "note_open" note.id %}" method="get" class="d-inline">
                {% csrf_token %}
                 <button type="submit" class="btn">
@@ -53,8 +59,11 @@ tr:hover {background-color: #D6EEEE;}
         </td>
         </tr>
     {% endfor %}
+
     </tbody>
-    </table> <hr>
+    </table>   {% if count == 0 %}
+    <h4 style="text-align:center"><i>No notes here yet</i></h4>
+            {% endif %}<hr>
 
 <nav aria-label="...">
   <ul class="pagination justify-content-center">
@@ -65,9 +74,14 @@ tr:hover {background-color: #D6EEEE;}
 
     {% endif %}
 
+
+    {% if count > 0 %}
+=======
+
   {% for i in nums %}
       <li class="page-item"> <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
   {% endfor %}
+  {% endif %}
 
     {% if notes.has_next %}
 
