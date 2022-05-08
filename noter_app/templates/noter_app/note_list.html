@@ -1,6 +1,7 @@
 {% extends 'noter_app/base.html' %}
 
 {% block content %}
+
     <style>
 
 table {animation-duration: 0.7s;
@@ -17,6 +18,10 @@ table {animation-duration: 0.7s;
   }
 }
 #buttons {width: 150px}
+
+
+<style>
+
 tr:nth-child(even) {
   background-color: rgba(100, 112, 212, 0.05);
 }
@@ -66,7 +71,6 @@ tr:hover {background-color: #D6EEEE;}
                 <button type="submit" class="btn">
                     <i class="fa-solid fa-eye"></i>
                 </button>
-
             </form>
             <a href = "{% url 'note_update' note.id %}" class="btn text-secondary px-0">
                <i class="far fa-edit fa-lg"></i>
@@ -89,17 +93,16 @@ tr:hover {background-color: #D6EEEE;}
 <nav aria-label="...">
   <ul class="pagination justify-content-center">
 
-
-
-
-
     {% if notes.has_previous %}
         <li class="page-item"> <a class="page-link"  href="?page=1">&laquo 1</a></li>
         <li class="page-item"> <a class="page-link" href="?page= {{ notes.previous_page_number }}">Previous</a></li>
 
     {% endif %}
 
+
     {% if count > 0 %}
+=======
+
   {% for i in nums %}
       <li class="page-item"> <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
   {% endfor %}
