@@ -2,16 +2,42 @@
 
 {% block content %}
 
+    <style>
+
+table {animation-duration: 0.7s;
+  animation-name: slidein;}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 500%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+#buttons {width: 150px}
+
+
 <style>
+
 tr:nth-child(even) {
   background-color: rgba(100, 112, 212, 0.05);
 }
 tr:hover {background-color: #D6EEEE;}
 
+.table-borderless{table-layout:fixed; width:870px; }
+.table-borderless td:nth-of-type(1) {width:270px; overflow-wrap: break-word;}
+.table-borderless td:nth-of-type(2) {width:200px; overflow-wrap: break-word;}
+.table-borderless td:nth-of-type(3) {width:170px;}
+.table-borderless td:nth-of-type(4) {width:150px;}
+.table-borderless td:nth-of-type(5) {width:150px;}
+.table-borderless td:nth-of-type(6) {width:140px;}
 </style>
-    <table class ="table table-borderless" >
+    <table class ="table table-borderless">
 
-        <thead class="border-bottom font-weight-bold" style="background-color: mintcream" >
+        <thead class="border-bottom font-weight-bold" style="background-color: mintcream">
         <tr>
             <td><h4>Title</h4></td>
             <td><h4>Text</h4></td>
@@ -33,14 +59,13 @@ tr:hover {background-color: #D6EEEE;}
     {% for note in notes %}
 
         <tr>
-            <td><b>{{ note.title|truncatechars:30  }}</b></td>
-            <td>{{ note.text|truncatechars:30  }}</td>
+            <td ><b>{{ note.title|truncatechars:30 }}</b></td>
+            <td id="text_row">{{ note.text|truncatechars:30  }}</td>
             <td>{{ note.category}}</td>
-            <td>{{ note.date_create }}</td>
-            <td>{{ note.date_modify }}</td>
-        <td>
+            <td>{{ note.date_create|date:'M-d-y H:i'  }}</td>
+            <td>{{ note.date_modify|date:'M-d-y H:i'  }}</td>
 
-
+        <td id="buttons">
     <form action="{% url "note_open" note.id %}" method="get" class="d-inline">
                {% csrf_token %}
                 <button type="submit" class="btn">
